@@ -58,7 +58,7 @@ void car_delete(struct car* car_ptr) {
 }
 
 
-void car_print(const struct car* self, FILE* stream)
+void car_print(FILE* stream, const struct car* self)
 {
     fprintf(stream, "--------------------------------------------------------------------------------\n");
     fprintf(stream, "Brand: %s\n", self->brand);
@@ -92,7 +92,7 @@ void car_change_color(struct car* car, const char* color)
 }
 
 
-void extern car_change_transmission(struct car* self)
+void extern car_change_transmission(struct car* self, enum car_transmission transmission)
 {
     if (self->transmission == MANUAL) {
         self->transmission = AUTOMATIC;
@@ -103,7 +103,8 @@ void extern car_change_transmission(struct car* self)
     }
 }
 
-void file_read(const char* filename, FILE* fp) {
+void file_read(const char* filename, FILE* fp) 
+{
     // Open the file for reading
     FILE* file = fopen(filename, "r");
     if (!file) {
