@@ -47,14 +47,14 @@ struct car* car_new(const char* brand,
 
 void car_change_color(struct car* car, const char* color);
 
-void car_change_transmission(struct car* self);
+void car_change_transmission(struct car* self, enum car_transmission transmission);
 
-void car_print(struct car* self, FILE* stream);
+void car_print(FILE* stream, const struct car* self);
 
 void car_delete(struct car* car_ptr);
 
 
-void file_read(const char* filename);
+void file_read(const char* filename, FILE* fp);
 
 struct car_vtable 
 {
@@ -64,3 +64,4 @@ struct car_vtable
 };
 
 #endif /* CAR_H_ */
+
