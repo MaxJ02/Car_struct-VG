@@ -49,7 +49,7 @@ void car_change_color(struct car* car, const char* color);
 
 void car_change_transmission(struct car* self);
 
-void car_print(const struct car* self, FILE* stream);
+void car_print(struct car* self, FILE* stream);
 
 void car_delete(struct car* car_ptr);
 
