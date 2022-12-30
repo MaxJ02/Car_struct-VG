@@ -15,34 +15,49 @@
 * Filen cars.txt stängs och sedan skriver programmet ut innehållet från angiven fil rad för rad, i angiven utström.
 *******************************************************************************************************************************/
 
-
-
-
 int main(void)
 {
 
 	struct car car1;
 	struct car car2;
 	struct car car3;
-	car_init(&car1, "Volvo", "V70", "Black", 1995, MANUAL);
-	car_init(&car2, "BMW", "Z3", "Blue", 2001, AUTOMATIC);
-	car_init(&car3, "Skoda", "Octavia RS", "White", 2003, MANUAL);
+	strcpy(car1.brand, "Volvo");
+	strcpy(car1.model, "V70");
+	strcpy(car1.color, "Black");
+	car1.year_of_launch = 1995;
+	car1.transmission = MANUAL;
+	car1.vptr = car_vptr_get();
+
+
+	strcpy(car2.brand, "BMW");
+	strcpy(car2.model, "Z3");
+	strcpy(car2.color, "Blue");
+	car2.year_of_launch = 2001;
+	car2.transmission = AUTOMATIC;
+	car2.vptr = car_vptr_get();
+
+	strcpy(car3.brand, "Skoda");
+	strcpy(car3.model, "Octavia RS");
+	strcpy(car3.color, "White");
+	car3.year_of_launch = 2003;
+	car3.transmission = MANUAL;
+	car3.vptr = car_vptr_get();
+
+
+	car1.vptr->car_print(stdout, &car1); 
+	car2.vptr->car_print(stdout, &car2);
+	car3.vptr->car_print(stdout, &car3);
+
+
+	//Ändrar och Skriver ut car3 igen för att kontrollera att ändringarna lyckades.
+	car1.vptr->car_change_color(&car3, "Green");
+	car1.vptr->car_change_transmission(&car3, AUTOMATIC);
+	car1.vptr->car_print(stdout, &car3);
+
+
 
 	struct car* cars[] = { &car1, &car2, &car3 };
 
-	car1.vptr->car_print(stdout, &car1);
-	car2.vptr->car_print(stdout, &car2);
-	car3.vptr->car_print(stdout,&car3);
-
-	car3.vptr->change_color(&car3, "Green");
-
-	car3.vptr->change_transmission(&car3, MANUAL);
-
-	//car_change_transmission(&car3);
-
-	//Skriver ut car3 igen för att kontrollera att ändringarna lyckades.
-	//car_print(&car3, stdout);
-	car3.vptr->car_print(stdout, &car3);
 
 	//Öppnar och skriver till filen "cars.txt", om filpekaren returnerar null skrivs ett felutmeddelande ut och 1 returneras för att indikera att ett fel har skett.
 	FILE* fp = fopen("cars.txt", "w");
@@ -51,17 +66,21 @@ int main(void)
 		return 1;
 	}
 
-	//Här skrivs innehållet ur cars arrayen ut till filen cars.txt via funktionen car_print
+	//Här skrivs innehållet ur cars arrayen ut till filen cars.txt via en vptr till funktionen car_print.
 	size_t i;
 	for (i = 0; i < 3; i++) {
-		car_print(fp, cars[i]);
+		cars[i]->vptr->car_print(fp, cars[i]);
 	}
+
 
 	// Stänger filen cars.txt
 	fclose(fp);
 
-	//Skriver ut innehållet från angiven fil rad för rad, i angiven utström.
+	//Läser av och skriver ut innehållet från angiven fil rad för rad, i angiven utström.
 	file_read("cars.txt", stdout);
+	
+
 
 	return 0;
+	
 }
