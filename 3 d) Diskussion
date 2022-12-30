@@ -1,0 +1,11 @@
+vad du tycker om vtables; var det värt mödan att spara in på två pekare per car-objekt? Hade din åsikt ändrats om
+man hade använt 100 funktionspekare per car-objekt? Slutligen, vilken av de tre implementeringar av strukten car
+föredrar du (uppgift 1 – 3)?
+
+
+
+
+Svar: Personligen tycker jag inte alls det var värt mödan att spara in två pekare per car objekt, i detta fall. Jag förstår någorlunda varför funktionaliteten finns 
+precis som du skriver, hade det varit 100 funktionspekare per car objekt så hade jag nog föredragit vtables, men: Den nivån på programmering som vi kör så
+tykcer jag nog ändå att det första sättet enl uppgift 1 är att föredra, men det kan också vara en vanesak. 2 och 3 är betydligt tydligare och snyggare, men också
+jobbigare att skriva tyvärr.
