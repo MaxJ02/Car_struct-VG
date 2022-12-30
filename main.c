@@ -5,14 +5,10 @@
 ********************************************************************************/
 
 /**************************************************************************************************************************
-* main: Program som skapar 3 olika car objekt genom strukten car. Tilldelar attribut till dessa
-* och placerar de sedan i strukten cars. Sedan skrivs varje bil ut för sig via anropp av funktionen
-* car_print till angiven utström, i detta fall stdout. Bil 3 ändrar sedan färg och växellåda
-* genom anropp av funktionerna car_change_color och car_change_transmission. Bil 3 skrivs sedan
-* ut igen för att kontrollera att ändringarna verkligen sker. Sedan Öppnar och skriver till filen "cars.txt",
-* om filpekaren returnerar null skrivs ett felutmeddelande ut och 1 returneras för att indikera att ett fel har skett.
-* Lyckas däremot programmet öppna och skriva i filen "cars.txt så skrivs innehållet ur cars arrayen ut till filen via funktionen car_print.
-* Filen cars.txt stängs och sedan skriver programmet ut innehållet från angiven fil rad för rad, i angiven utström.
+* main: Program som skapar 3 olika car objekt genom strukten car. Tilldelar attribut till varje bil enskilt via funktionen strcpy
+* samt med hjälp av vptr som gör det möjligt att göra koden extremt tydlig. Sedan skrivs varje bil ut för sig i angiven utström
+* med hjälp av en vptr till den tidigare funktionen car_print. Sedan ändrar bil 3 färg och växellåda med hjälp av vptrers som pekar
+* på respektive change funktion. Sedan är koden väldigt likartad med föregående version men anpassad efter användandet av vpters.
 *******************************************************************************************************************************/
 
 int main(void)
