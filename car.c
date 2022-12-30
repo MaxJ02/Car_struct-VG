@@ -1,11 +1,11 @@
 #include "car.h"
 
 void car_init(struct car* self,
-    const char* brand,
-    const char* model,
-    const char* color,
-    unsigned int year_of_launch,
-    enum car_transmission transmission)
+              const char* brand,
+              const char* model,
+              const char* color,
+              unsigned int year_of_launch,
+              enum car_transmission transmission)
 {
     strcpy(self->brand, brand);
     strcpy(self->model, model);
@@ -38,7 +38,7 @@ struct car* car_new(const char* brand,
     struct car* c = malloc(sizeof(struct car));
     if (c == NULL)
     {
-        // Allocation failed
+        // Returnerar null om allokering misslyckas.
         return NULL;
     }
     return c;
@@ -121,7 +121,8 @@ void file_read(const char* filename, FILE* fp)
 
 struct car_vtable* car_vptr_get() 
 {
-    static struct car_vtable vtable = {
+    static struct car_vtable vtable = 
+    {
         .car_change_color = &car_change_color,
         .car_change_transmission = &car_change_transmission,
         .car_print = &car_print
