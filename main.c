@@ -46,9 +46,9 @@ int main(void)
 
 
 	//Ändrar och Skriver ut car3 igen för att kontrollera att ändringarna lyckades.
-	car1.vptr->car_change_color(&car3, "Green");
-	car1.vptr->car_change_transmission(&car3, AUTOMATIC);
-	car1.vptr->car_print(stdout, &car3);
+	car3.vptr->car_change_color(&car3, "Green");
+	car3.vptr->car_change_transmission(&car3, AUTOMATIC);
+	car3.vptr->car_print(stdout, &car3);
 
 
 
