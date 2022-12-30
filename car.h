@@ -25,19 +25,19 @@ struct car
 };
 
 void car_init(struct car* self,
-    const char* brand,
-    const char* model,
-    const char* color,
-    unsigned int year_of_launch,
-    enum car_transmission transmission);
+              const char* brand,
+              const char* model,
+              const char* color,
+              unsigned int year_of_launch,
+              enum car_transmission transmission);
 
 void car_clear(struct car* c);
 
 struct car* car_new(const char* brand,
-    const char* model,
-    const char* color,
-    unsigned int year_of_launch,
-    enum car_transmission transmission);
+                    const char* model,
+                    const char* color,
+                    unsigned int year_of_launch,
+                    enum car_transmission transmission);
 
 void car_change_color(struct car* car, const char* color);
 
